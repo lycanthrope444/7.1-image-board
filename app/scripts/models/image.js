@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 
 var ImagePost = Backbone.Model.extend({
-
+  idAttribute: '_id'
 });
 
 var ImageCollection = Backbone.Collection.extend({

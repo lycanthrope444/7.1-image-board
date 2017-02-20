@@ -12,9 +12,9 @@ var ImageList = React.createClass({
 
     return (
       <div>
-        <img></img>
+        <img />
         <div>
-          
+          PlaceHolder
         </div>
       </div>
     )
