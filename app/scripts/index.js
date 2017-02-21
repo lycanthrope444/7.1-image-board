@@ -12,7 +12,7 @@ var imageList = new ImageCollection();
 
 ReactDOM.render(
   React.createElement(App, {
-    children: [React.createElement(Form), React.createElement(Listing)],
+    // children: [React.createElement(Form), React.createElement(Listing)],
     collection: imageList
   }),
   document.getElementById('root')

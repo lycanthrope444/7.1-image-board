@@ -1,5 +1,7 @@
 var $ = require('jquery');
 var React = require('react');
+var _ = require('underscore');
+var Backbone = require('backbone');
 
 var Form = require('./form.jsx').ImageForm;
 var Listing = require('./listing.jsx').ImageList;
@@ -9,8 +11,8 @@ var App = React.createClass({
     var imageList = this.props.collection;
     imageList.fetch();
     this.state = imageList;
-    this.props.children.state = imageList;
-
+    // this.props.children.state = imageList;
+    // console.log(imageList);
   },
   submitPic: function(event){
     event.preventDefault();
@@ -22,29 +24,61 @@ var App = React.createClass({
     };
     console.log($name.val(), $picture.val());
 
-    return (newPic);
+    this.state.create(newPic);
+  },
+  showHide: function(event){
+    event.preventDefault();
+    $('.form-group').slideToggle();
   },
   render: function(){
     // {this.props.children[0], console.log('rendered', this)}
+    // {this.props.children[1]}
+    var imageList = this.props.collection;
+    imageList.fetch();
+    console.log(imageList.toJSON());
     return (
       <div>
-        <div className="form-group">
-          <label>
-            Name:
-            <input type="text" name="name" id="name" className="form-control" />
-          </label>
-          <label>
-            Picture:
-            <input type="text" name="picture" id="picture" className="form-control" />
-          </label>
-        </div>
-        <button className ="btn" onClick={this.submitPic}>Submit</button>
-
-        {this.props.children[1]}
+        <form>
+          <div className="form-group">
+            <label>
+              Name:
+              <input type="text" name="name" id="name" className="form-control" />
+            </label>
+            <label>
+              Picture:
+              <input type="text" name="picture" id="picture" className="form-control" />
+            </label>
+            <button className ="btn" onClick={this.submitPic}>Submit Pic</button>
+          </div>
+          <button className ="btn" onClick={this.showHide}>Add Pic</button>
+        </form>
+        <ul>
+          <ImageList data={imageList}/>
+        </ul>
       </div>
     );
   }
 });
+
+
+var ImageList = React.createClass({
+  componentWillMount: function(){
+    // this.name = 'placeholder';
+    // this.picture = 0;
+    console.log(this.props.data.toJSON());
+  },
+  render: function(){
+    return (
+      <li>
+        <img src={this.picture}/>
+        <div>
+          {this.name}
+        </div>
+      </li>
+    )
+  }
+});
+
 
 module.exports = {
   App : App

@@ -5,7 +5,6 @@ var ImageCollection = require('../models/image').ImageCollection;
 var ImageList = React.createClass({
   getInitialState: function(){
     var images = new ImageCollection();
-    images
     return images;
   },
   render: function(){
@@ -14,7 +13,7 @@ var ImageList = React.createClass({
       <div key={this.id}>
         <img />
         <div>
-          PlaceHolder
+
         </div>
       </div>
     )
