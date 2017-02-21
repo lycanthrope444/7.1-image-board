@@ -11,7 +11,7 @@ var ImageList = React.createClass({
   render: function(){
 
     return (
-      <div>
+      <div key={this.id}>
         <img />
         <div>
           PlaceHolder
