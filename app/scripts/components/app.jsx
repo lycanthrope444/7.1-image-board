@@ -35,7 +35,7 @@ var App = React.createClass({
     // {this.props.children[1]}
     var imageList = this.props.collection;
     imageList.fetch();
-    console.log(imageList.toJSON());
+    // console.log(this.state);
     return (
       <div>
         <form>
@@ -65,17 +65,27 @@ var ImageList = React.createClass({
   componentWillMount: function(){
     // this.name = 'placeholder';
     // this.picture = 0;
-    console.log(this.props.data.toJSON());
+    // var passedData = this.props.data.map(function(data){
+    //   return (
+    //     <li>{data}</li>
+    //   )
+    // });
+    // console.log(passedData);
   },
   render: function(){
-    return (
-      <li>
-        <img src={this.picture}/>
-        <div>
-          {this.name}
-        </div>
-      </li>
-    )
+    // this.props.data.map(function(data){
+      return (
+        <li>
+          <img src={this.picture}/>
+          <div>
+            {this.name}
+          </div>
+          <button className="btn">Edit Pic</button>
+          <button className="btn">Delete Pic</button>
+        </li>
+      )
+    // });
+
   }
 });
 
